@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if(user != null){
 
       var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Admin : " + email_id + "  <a id='logout' onclick='logout();'>Logout</a>";
+      document.getElementById("user_para").innerHTML = "Admin : " + email_id + "  <a class='btn btn-primary' onclick='logout();'>Logout</a>";
       loadDB();
     }
 
