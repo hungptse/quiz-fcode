@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>F-Code Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="quiz.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic'
+        rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.css">
+    <link rel="shortcut icon" href="logo.png">
+
+</head>
+
+<body>
+    <div class="col-lg-offset-4 col-md-6">
+        <img src="logoFU.png" alt="" style="margin-right: 10px;">
+        <img src="logo.png" alt="" height="100px" width="100px" style="margin-left: 100px;">
+    </div>
+    <div id="slide" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner" id="quiz">
+            <div class="item active">
+                <h2 class="quiz-title">How well do you know about  Software Engineering?</h2>
+                <div class="quiz-answers"><a class="quiz-button btn" style="margin-left: 0px;" href="#slide" data-slide="next">Take
+                        the quiz!</a></div>
+            </div>
+        </div>
+    </div>
+    <h4 class="text-center col-lg-offset-3 col-md-offset-5 col-lg-6">&copy Code by HungPT - Sponsored FCode</h4>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDcNaiwutX873VqFhBZez0gDnXK3Qa9Fsc",
+    authDomain: "test-1cec7.firebaseapp.com",
+    databaseURL: "https://test-1cec7.firebaseio.com/",
+    projectId: "test-1cec7",
+    storageBucket: "test-1cec7.appspot.com",
+    messagingSenderId: "436969892665"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="quiz.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+</html>
