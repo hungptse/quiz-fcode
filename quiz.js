@@ -1,3 +1,5 @@
+
+
 var database = firebase.database();
 var quiz = [{
         "answers": [
@@ -25,6 +27,17 @@ var quiz = [{
     },
     {
         "answers": [
+            "Absolutely Yesss",
+            "Yes but another option",
+        ],
+        "correct": {
+            "index": 0,
+        },
+        "number": 3,
+        "prompt": "HungPT will passed PRJ321 by ThanhPC?"
+    },
+    {
+        "answers": [
             "Cài win dạo",
             "IT Help Desk ",
             "Hack Facebook",
@@ -34,7 +47,7 @@ var quiz = [{
         "correct": {
             "index": 3,
         },
-        "number": 3,
+        "number": 4,
         "prompt": "Theo bạn công việc sau này khi tốt nghiệp ngành Kỹ thuật phần mềm sẽ làm gì?"
     }
 ];
@@ -76,7 +89,9 @@ function testQuiz(number, answer) {
     if (answer === correct) {
         grade = parseInt(grade) + 1;
     }
-    if (number == quiz.length) {
+    var totalQuiz = quiz.length;
+    var title;
+    if (number == totalQuiz) {
         swal.mixin({
             input: 'text',
             confirmButtonText: 'Next &rarr;',
@@ -97,15 +112,21 @@ function testQuiz(number, answer) {
             },
         ]).then((result) => {
             if (result.value) {
+                if (grade == totalQuiz) {
+                    title = 'Wow&mdash;perfect score! \n Your score : ';
+                }
+
+
+
                 swal({
-                    title: 'All done! Your grade is ' + grade + '/' + quiz.length,
+                    title: title + grade + '/' + totalQuiz,
                     confirmButtonText: 'Lovely ♥ !'
                 });
                 grade = 0;
             }
             firebase.database().ref('quiz/' + result.value[0]).set({
                 name: result.value[1],
-                grade: grade + '/' + quiz.length
+                grade: grade + '/' + totalQuiz
             });
         })
     }
