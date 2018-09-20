@@ -101,7 +101,7 @@ function testQuiz(number, answer) {
                     title: 'All done! Your grade is ' + grade + '/' + quiz.length,
                     confirmButtonText: 'Lovely ♥ !'
                 });
-
+                grade = 0;
             }
             firebase.database().ref('quiz/' + result.value[0]).set({
                 name: result.value[1],
