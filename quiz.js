@@ -1,5 +1,3 @@
-
-
 var database = firebase.database();
 var quiz = [{
         "answers": [
@@ -51,8 +49,8 @@ var quiz = [{
         "prompt": "Theo bạn công việc sau này khi tốt nghiệp ngành Kỹ thuật phần mềm sẽ làm gì?"
     }
 ];
-window.onload = createQuiz();
 
+window.onload = createQuiz();
 function createQuiz() {
     var main = document.getElementById("quiz");
     var inner = document.createElement("div");
@@ -74,7 +72,7 @@ function createSlide(question) {
     var quizAnw = document.createElement("div");
     quizAnw.className = "quiz-answers";
     for (var i = 0; i < question.answers.length; i++) {
-        quizAnw.innerHTML += "<a class='quiz-button btn' style='margin-left: 0px;' href='#slide' data-slide='next' onclick='testQuiz(" + question.number + "," + i +");'>" + question.answers[i] + "</a>";
+        quizAnw.innerHTML += "<a class='quiz-button btn' style='margin-left: 0px;' href='#slide' data-slide='next' onclick='testQuiz(" + question.number + "," + i + ");'>" + question.answers[i] + "</a>";
     }
     slide.appendChild(quizAnw);
     return slide;
@@ -83,16 +81,16 @@ function createSlide(question) {
 var grade = 0;
 
 function testQuiz(number, answer) {
-    
-    var question = quiz[number-1];
+
+    var question = quiz[number - 1];
     var correct = question.correct.index;
     if (answer === correct) {
         grade = parseInt(grade) + 1;
     }
     var totalQuiz = quiz.length;
-    var title;
     if (number == totalQuiz) {
         swal.mixin({
+            type: 'success',
             input: 'text',
             confirmButtonText: 'Next &rarr;',
             allowOutsideClick: false,
@@ -112,22 +110,21 @@ function testQuiz(number, answer) {
             },
         ]).then((result) => {
             if (result.value) {
-                if (grade == totalQuiz) {
-                    title = 'Wow&mdash;perfect score! \n Your score : ';
-                }
-
-
-
                 swal({
-                    title: title + grade + '/' + totalQuiz,
+                    type: 'success',
+                    title: 'All done! Your grade is ' + grade + '/' + totalQuiz,
                     confirmButtonText: 'Lovely ♥ !'
+                });
+
+                firebase.database().ref('quiz/' + result.value[0]).set({
+                    id : result.value[0],
+                    name: result.value[1],
+                    grade: grade + '/' + totalQuiz,
+                    time: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString(),
                 });
                 grade = 0;
             }
-            firebase.database().ref('quiz/' + result.value[0]).set({
-                name: result.value[1],
-                grade: grade + '/' + totalQuiz
-            });
-        })
+            
+        });
     }
 }

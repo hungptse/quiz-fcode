@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Fcode Quiz Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="logo.png">
+</head>
+
+<body>
+
+    <div class="row col-lg-6 col-lg-offset-4">
+        <img src="logo.png" alt="" height="100px" width="100px" style="margin-left: 100px;">
+        <img src="logoFU.png" alt="" style="margin-right: 10px;">
+    </div>
+    <div id="login_div" class="main-div">
+        <h3>Fcode Quiz Login</h3>
+        <input type="email" placeholder="Email..." id="email_field" />
+        <input type="password" placeholder="Password..." id="password_field" />
+        <button onclick="login()">Login to Account</button>
+    </div>
+    <div id="user_div" class="loggedin-div">
+        <h3 id="user_para"></h3>
+    </div>
+    <div class="col-lg-10 col-lg-offset-1" id="list">
+        <table class="table table-hover table-bordered">
+            <caption>List of quiz result</caption>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </div>
+
+    <h4 class="text-center col-lg-offset-3 col-md-offset-5 col-lg-6">&copy Code by HungPT - Sponsored FCode</h4>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDcNaiwutX873VqFhBZez0gDnXK3Qa9Fsc",
+            authDomain: "test-1cec7.firebaseapp.com",
+            databaseURL: "https://test-1cec7.firebaseio.com/",
+            projectId: "test-1cec7",
+            storageBucket: "test-1cec7.appspot.com",
+            messagingSenderId: "436969892665"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="index.js"></script>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+</body>
+
+</html>
