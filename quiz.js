@@ -18,7 +18,7 @@ var quiz = [{
             "Android"
         ],
         "correct": {
-            "index": 0,
+            "index": 1,
         },
         "number": 2,
         "prompt": "What operating system of Iphone?"
