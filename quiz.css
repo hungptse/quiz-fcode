@@ -13,6 +13,9 @@ a {
     font-size: 1.6rem !important;
 }
 
+#btnPrev,#btnNext{
+    display: none;
+}
 #quiz {
     margin-top: 5%;
     transition: all 0.5s;

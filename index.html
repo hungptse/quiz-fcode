@@ -24,9 +24,13 @@
     <div id="slide" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner" id="quiz">
             <div class="item active">
-                <h2 class="quiz-title">How well do you know about  Software Engineering?</h2>
-                <div class="quiz-answers"><a class="quiz-button btn" style="margin-left: 0px;" href="#slide" data-slide="next">Take
+                <h2 class="quiz-title">How well do you know about Software Engineering?</h2>
+                <div class="quiz-answers"><a class="quiz-button btn" style="margin-left: 0px;" href="#slide" data-slide="next"
+                        onclick="requireID();createQuiz();">Take
                         the quiz!</a></div>
+                <a class="quiz-button btn" id="btnPrev" href="#slide" data-slide="prev">!</a>
+                <a class="quiz-button btn" id="btnNext" href="#slide" data-slide="next">!</a>
+
             </div>
         </div>
     </div>
@@ -34,17 +38,18 @@
 </body>
 <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDcNaiwutX873VqFhBZez0gDnXK3Qa9Fsc",
-    authDomain: "test-1cec7.firebaseapp.com",
-    databaseURL: "https://test-1cec7.firebaseio.com/",
-    projectId: "test-1cec7",
-    storageBucket: "test-1cec7.appspot.com",
-    messagingSenderId: "436969892665"
-  };
-  firebase.initializeApp(config);
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDcNaiwutX873VqFhBZez0gDnXK3Qa9Fsc",
+        authDomain: "test-1cec7.firebaseapp.com",
+        databaseURL: "https://test-1cec7.firebaseio.com/",
+        projectId: "test-1cec7",
+        storageBucket: "test-1cec7.appspot.com",
+        messagingSenderId: "436969892665"
+    };
+    firebase.initializeApp(config);
 </script>
 <script src="quiz.js"></script>
 <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+
 </html>
