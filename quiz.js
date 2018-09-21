@@ -102,6 +102,7 @@ function createFinalSlide(question) {
 }
 var grade = 0;
 var idStudent, nameStudent;
+
 function requireID() {
     swal.mixin({
         type: 'success',
@@ -148,12 +149,15 @@ function requireID() {
                     swal({
                         type: 'success',
                         title: "Let\'s start",
-                        text : "WARNING: Each ID only take a quiz once. Good luck!",
+                        text: "WARNING: Each ID only take a quiz once. Good luck!",
                         confirmButtonText: 'Go ♥ !'
                     });
                     nameStudent = result.value[1];
                 }
-            } else {
+            } else if (result.value[0] == "FcodeAnonymous") {
+                idStudent = "FcodeAnonymous";
+                nameStudent = result.value[1];
+            } else if (checkId == false) {
                 swal({
                     type: 'error',
                     title: "Invalid ID",
@@ -161,7 +165,7 @@ function requireID() {
                     text: 'Please use your ID (SE140XXX)'
                 });
                 document.getElementById("btnPrev").click();
-            }
+            } 
         });
     });
 }
@@ -174,21 +178,39 @@ function testQuiz(number, answer) {
     }
     var totalQuiz = quiz.length;
     if (number == totalQuiz) {
-        swal({
-            type: 'success',
-            title: 'All done! Your grade is ' + grade + '/' + totalQuiz,
-            confirmButtonText: 'Lovely ♥ !',
-        }).then(() => {
-            var updateData = {
-                id: idStudent,
-                name: nameStudent,
-                status: true,
-                grade: grade + '/' + totalQuiz,
-                time: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString(),
-            }
-            document.getElementById("btnNext").click();
-            updateInfo(idStudent,updateData);
-        });
+        if (idStudent == "FcodeAnonymous") {
+            swal({
+                type: 'success',
+                title: 'All done! Your grade is ' + grade + '/' + totalQuiz,
+                confirmButtonText: 'Lovely ♥ !',
+            }).then(() => {
+                database.ref().child('anonymous').push();
+                database.ref('anonymous/' + nameStudent.split("/")[0]).set({
+                    id: nameStudent.split("/")[0],
+                    name: nameStudent.split("/")[1],
+                    grade: grade + '/' + totalQuiz,
+                    time: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString(),
+                });
+                document.getElementById("btnNext").click();
+                
+            });
+        } else{
+            swal({
+                type: 'success',
+                title: 'All done! Your grade is ' + grade + '/' + totalQuiz,
+                confirmButtonText: 'Lovely ♥ !',
+            }).then(() => {
+                var updateData = {
+                    id: idStudent,
+                    name: nameStudent,
+                    status: true,
+                    grade: grade + '/' + totalQuiz,
+                    time: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString(),
+                }
+                document.getElementById("btnNext").click();
+                updateInfo(idStudent, updateData);
+            });
+        }
         grade = 0;
     }
 }
