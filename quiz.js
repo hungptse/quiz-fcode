@@ -185,13 +185,13 @@ var quiz = [{
             "Above 8 score",
             "Above 9 score",
             "above 8.5 score",
-            "Above 9.5 score",
+            "Above 10.5 score",
         ],
         "correct": {
             "index": 1,
         },
         "number": 15,
-        "prompt": "PRJ321 have grade: Quiz(20%), Assignment(30%), Practical(20%), Final(30%) <br> HungPT get Quiz : 6, Assignment : 2, Practical : 8. If want to pass his must have average grade > 5.0 <br> How many final score his must take to pass this subject?"
+        "prompt": "PRJ321 have grade: Quiz(20%), Assignment(30%), Practical(20%), Final(30%) <br> HungPT studing by ThanhPC and get Quiz : 6, Assignment : 2, Practical : 8. If want to pass his must have average grade > 5.0 <br> How many final score his must take to pass this subject?"
     },
 ];
 
