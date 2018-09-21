@@ -45,14 +45,18 @@ function logout(){
 }
 
 function loadDB() {
-  var database = firebase.database().ref('quiz');
+  var i = 1;
+  var database = firebase.database().ref()
   database.on("value", function(snapshot) {
-    var i = 0;
     document.getElementById("data").innerHTML = "";
+    i = 1;
     snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
-      i++;
-      document.getElementById("data").appendChild(createRow(childData,i));
+      childSnapshot.forEach(function(childData) {
+        if (childData.val().status != false) {
+              document.getElementById("data").appendChild(createRow(childData.val(),i));
+              i++;
+            }
+      });
     });
   });
 }
